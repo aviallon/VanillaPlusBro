@@ -31,6 +31,7 @@ public class TileMergerFurnace extends TileEntity implements IInventory, ITickab
     private int currentBurnTime;
     private int cookTime;
     private int totalCookTime;
+    private int upgradeLevel = 1;
 
     @Override
     public String getName(){
@@ -94,6 +95,7 @@ public class TileMergerFurnace extends TileEntity implements IInventory, ITickab
     @Override
     public void readFromNBT(NBTTagCompound compound){
         super.readFromNBT(compound);
+        this.upgradeLevel = compound.getInteger("UpgradeLevel");
         this.inventory = NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
         ItemStackHelper.loadAllItems(compound, this.inventory);
         this.burnTime = compound.getInteger("BurnTime");
@@ -109,6 +111,7 @@ public class TileMergerFurnace extends TileEntity implements IInventory, ITickab
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
         //compound.setBoolean("IsBurning", this.);
+        compound.setInteger("UpgradeLevel", (short)this.upgradeLevel);
         compound.setInteger("BurnTime", (short)this.burnTime);
         compound.setInteger("CookTime", (short)this.cookTime);
         compound.setInteger("CookTimeTotal", (short)this.totalCookTime);
@@ -135,29 +138,29 @@ public class TileMergerFurnace extends TileEntity implements IInventory, ITickab
     }
 
     public void update() {
-        boolean flag = this.isBurning();
+        boolean isBurning = this.isBurning();
         boolean flag1 = false;
 
         if(this.isBurning())
             --this.burnTime;
 
         if(!this.getWorld().isRemote) {
-            ItemStack stack = (ItemStack)this.inventory.get(2);
+            ItemStack combustible = (ItemStack)this.inventory.get(2);
 
-            if(this.isBurning() || !stack.isEmpty() && !((((ItemStack)this.inventory.get(0)).isEmpty()) || ((ItemStack)this.inventory.get(1)).isEmpty())) {
+            if(this.isBurning() || !combustible.isEmpty() && !((((ItemStack)this.inventory.get(0)).isEmpty()) || ((ItemStack)this.inventory.get(1)).isEmpty())) {
                 if(!this.isBurning() && this.canSmelt()) {
-                    this.burnTime = getItemBurnTime(stack);
+                    this.burnTime = getItemBurnTime(combustible);
                     this.currentBurnTime = this.burnTime;
 
                     if(this.isBurning()) {
                         flag1 = true;
 
-                        if(!stack.isEmpty()) {
-                            Item item = stack.getItem();
-                            stack.shrink(1);
+                        if(!combustible.isEmpty()) {
+                            Item item = combustible.getItem();
+                            combustible.shrink(1);
 
-                            if(stack.isEmpty()) {
-                                ItemStack item1 = item.getContainerItem(stack);
+                            if(combustible.isEmpty()) {
+                                ItemStack item1 = item.getContainerItem(combustible);
                                 this.inventory.set(2, item1);
                             }
                         }
@@ -175,7 +178,7 @@ public class TileMergerFurnace extends TileEntity implements IInventory, ITickab
                     this.cookTime = 0;
             } else if(!this.isBurning() && this.cookTime > 0)
                 this.cookTime = MathHelper.clamp(this.cookTime - 2, 0, this.totalCookTime);
-            if(flag != this.isBurning()) {
+            if(isBurning != this.isBurning()) {
                 flag1 = true;
                 BlockMerger.setState(this.isBurning(), this.getWorld(), this.pos);
             }
@@ -184,7 +187,7 @@ public class TileMergerFurnace extends TileEntity implements IInventory, ITickab
     }
 
     public int getCookTime(ItemStack input1, ItemStack input2) {
-        return 200;
+        return (200 / upgradeLevel);
     }
 
     private boolean canSmelt() {
