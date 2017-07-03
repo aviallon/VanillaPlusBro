@@ -1,0 +1,16 @@
+[
+{
+  "modid": "aviallonvpb",
+  "name": "Vanilla Plus Bro",
+  "description": "It's a little bonus over Vanilla :D",
+  "version": "0.1",
+  "mcversion": "[1.11.2]",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["aviallon"],
+  "credits": "Loremaster for the tutorial",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

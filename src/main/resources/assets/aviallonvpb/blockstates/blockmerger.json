@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "burning=false,facing=north": { "model": "aviallonvpb:blockmerger" },
+    "burning=false,facing=south": { "model": "aviallonvpb:blockmerger", "y": 180 },
+    "burning=false,facing=west":  { "model": "aviallonvpb:blockmerger", "y": 270 },
+    "burning=false,facing=east":  { "model": "aviallonvpb:blockmerger", "y": 90 },
+    "burning=true,facing=north": { "model": "aviallonvpb:blockmerger_on" },
+    "burning=true,facing=south": { "model": "aviallonvpb:blockmerger_on", "y": 180 },
+    "burning=true,facing=west":  { "model": "aviallonvpb:blockmerger_on", "y": 270 },
+    "burning=true,facing=east":  { "model": "aviallonvpb:blockmerger_on", "y": 90 }
+  }
+}

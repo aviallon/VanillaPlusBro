@@ -1,0 +1,12 @@
+item.obsidianIngot.name=Obsidian Ingot
+item.obsidianPickaxe.name=Obsidian Pickaxe
+item.copperIngot.name=Copper Ingot
+item.copperPickaxe.name=Copper Pickaxe
+item.copperAxe.name=Copper Axe
+item.copperSpade.name=Copper Spade
+item.copperSword.name=Copper Sword
+item.copperHoe.name=Copper Hoe
+
+tile.copperOre.name=Copper Ore
+tile.copperBlock.name=Copper Block
+tile.merger.name=Merger

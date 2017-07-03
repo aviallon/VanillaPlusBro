@@ -1,0 +1,8 @@
+{
+  "parent": "block/orientable",
+  "textures": {
+    "top": "aviallonvpb:blocks/merger_top",
+    "front": "aviallonvpb:blocks/merger_front_off",
+    "side": "aviallonvpb:blocks/merger_side"
+  }
+}
