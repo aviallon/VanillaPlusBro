@@ -44,7 +44,8 @@ public class Reference {
     public static enum VanillaPlusBroBlocks {
         COPPERORE("copperOre", "BlockCopperOre"),
         COPPERBLOCK("copperBlock", "BlockCopperBlock"),
-        MERGER("merger", "BlockMerger");
+        MERGER("merger", "BlockMerger"),
+        REDSTONECALBE("redstoneCable", "BlockRedstoneCable");
 
         private String unlocalizedName;
         private String registryName;

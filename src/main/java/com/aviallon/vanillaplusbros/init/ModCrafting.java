@@ -15,7 +15,7 @@ public class ModCrafting {
 
         //GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.copperoreblock, 4), "xIx", "III" , "xIx", 'I', Items.IRON_INGOT);
         GameRegistry.addSmelting(ModBlocks.copperoreblock, new ItemStack(ModItems.copperIngot), 0.5F);
-        GameRegistry.addSmelting(Blocks.OBSIDIAN, new ItemStack(ModItems.obsidianIngot), 2F);
+        //GameRegistry.addSmelting(Blocks.OBSIDIAN, new ItemStack(ModItems.obsidianIngot), 2F);
 
         // Copper tools and weapons
         GameRegistry.addShapedRecipe(new ItemStack(ModItems.copperPickaxe), "CCC", "xSx", "xSx", 'C', ModItems.copperIngot, 'S', Items.STICK);

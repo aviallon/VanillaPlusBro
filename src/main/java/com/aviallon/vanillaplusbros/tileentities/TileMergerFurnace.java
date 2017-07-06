@@ -96,6 +96,8 @@ public class TileMergerFurnace extends TileEntity implements IInventory, ITickab
     public void readFromNBT(NBTTagCompound compound){
         super.readFromNBT(compound);
         this.upgradeLevel = compound.getInteger("UpgradeLevel");
+        if(this.upgradeLevel <= 1)
+            this.upgradeLevel = 1;
         this.inventory = NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
         ItemStackHelper.loadAllItems(compound, this.inventory);
         this.burnTime = compound.getInteger("BurnTime");
