@@ -15,7 +15,7 @@ out
 
 # gradle
 build/classes
-build/dependecy-cache
+build/dependency-cache
 build/resources
 build/retromapping
 build/sources
