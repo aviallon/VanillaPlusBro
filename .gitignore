@@ -14,7 +14,13 @@ out
 .idea
 
 # gradle
-build
+build/classes
+build/dependecy-cache
+build/resources
+build/retromapping
+build/sources
+build/taskLogs
+build/tmp
 .gradle
 
 # other
