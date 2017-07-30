@@ -15,7 +15,7 @@ import net.minecraft.util.ResourceLocation;
  */
 public class GuiMerger extends GuiContainer {
 
-    private static final ResourceLocation DUAL_FURNACE_TEXTURES = new ResourceLocation(Reference.MOD_ID + ":" + "textures/gui/container/dual_furnace.png");
+    private static final ResourceLocation MERGER_TEXTURES = new ResourceLocation(Reference.MOD_ID + ":" + "textures/gui/container/dual_furnace.png");
     private final InventoryPlayer player;
     private final TileMergerFurnace tileentity;
 
@@ -23,6 +23,10 @@ public class GuiMerger extends GuiContainer {
         super(new ContainerMerger(player, tileentity));
         this.player = player;
         this.tileentity = tileentity;
+    }
+
+    public static ResourceLocation getMergerTextures(){
+        return MERGER_TEXTURES;
     }
 
     @Override
@@ -36,7 +40,7 @@ public class GuiMerger extends GuiContainer {
     @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
         GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-        this.mc.getTextureManager().bindTexture(DUAL_FURNACE_TEXTURES);
+        this.mc.getTextureManager().bindTexture(MERGER_TEXTURES);
         this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 
         if(TileMergerFurnace.isBurning(this.tileentity)) {
